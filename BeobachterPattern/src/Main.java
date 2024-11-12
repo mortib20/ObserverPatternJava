@@ -12,27 +12,28 @@ public class Main {
         var phoneObserver = new WeatherModelPhoneObserver();
         var computerObserver = new WeatherModelComputerObserver();
 
-        // Abonnieren der Beobachter
+        System.out.println("------ Abonnieren des Observables ------");
         weatherObservable.subscribe(phoneObserver);
         weatherObservable.subscribe(computerObserver);
 
-        // Neue Informationen an die Observables
+        System.out.println("------ 4x update ------");
         weatherObservable.updateWeatherModel(WeatherModel.getRandomWeatherModel());
         weatherObservable.updateWeatherModel(WeatherModel.getRandomWeatherModel());
         weatherObservable.updateWeatherModel(WeatherModel.getRandomWeatherModel());
         weatherObservable.updateWeatherModel(WeatherModel.getRandomWeatherModel());
 
-        // PhoneObserver wird nicht mehr informiert
+        System.out.println("------ PhoneObserver unsubscribe ------");
         weatherObservable.unsubscribe(phoneObserver);
 
+        System.out.println("------ Nur der Computer wird informiert ------");
         weatherObservable.updateWeatherModel(WeatherModel.getRandomWeatherModel());
 
+        System.out.println("------ ComputerObserver unsubscribe ------");
         weatherObservable.unsubscribe(computerObserver);
 
-        // Keine Meldungen mehr in der Konsole
-        System.out.println("Nur der Computer wird informiert.");
+        System.out.println("------ Update aber keiner wird informiert ------");
         weatherObservable.updateWeatherModel(WeatherModel.getRandomWeatherModel());
 
-        System.out.println("Ende des Codes...");
+        System.out.println("------  Ende des Codes... ------ ");
     }
 }
