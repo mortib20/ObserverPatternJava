@@ -4,18 +4,20 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        /* Antipattern Beispiel
-        * - Manuelle Verwaltung der Observer -> Mögliche Code duplizierung
-        * - Observable verwaltet nicht seine subscriptions selbst -> Möglice Fehler
-        * - "Separation ob Concerns" -> Die Main Methode sollte aufgeteilt werden
-        * - "Open/Closed Principle" Main ist nicht geschlossen für Änderungen
-        * - "Law of Demeter" "principle of least knowledge" die main Methode weiß zu viel
-        * - "Dont repeat yourself" -> Wiederholte forEach
-        * - "Inversion of Control" -> Main ist für alles Zuständig */
+        /*
+         * ------- Antipattern Beispiel ---------
+         * - Manuelle Verwaltung der Observer → Mögliche Code duplizierung
+         * - Observable verwaltet nicht seine subscriptions selbst → Mögliche Fehler
+         * - "Separation ob Concerns" → Main Methode sollte aufgeteilt werden
+         * - "Open/Closed Principle" → Main ist nicht geschlossen für Änderungen
+         * - "Law of Demeter" "principle of least knowledge" → Main Methode weiß zu viel
+         * - "Dont repeat yourself" → Wiederholte forEach
+         * - "Inversion of Control" → Main ist für alles Zuständig
+         */
 
 
-        var phoneObserver = new WeatherModelObserver();
-        var computerObserver = new WeatherModelObserver();
+        var phoneObserver = new WeatherModelObserver(ObserverType.Phone);
+        var computerObserver = new WeatherModelObserver(ObserverType.Computer);
 
         var observers = new ArrayList<WeatherModelObserver>();
 
@@ -36,5 +38,10 @@ public class Main {
 
         // Manually remove subscriber
         observers.remove(phoneObserver);
+
+        // Inform all "Observers" about new weather
+        observers.forEach(o -> o.setCurrentWeatherModel(newCurrentWeatherModel));
+
+        System.out.println("Ende des Codes...");
     }
 }
