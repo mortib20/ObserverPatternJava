@@ -8,7 +8,7 @@ public class Main {
          * ------- Antipattern Beispiel ---------
          * - Manuelle Verwaltung der Observer → Mögliche Code duplizierung
          * - Observable verwaltet nicht seine subscriptions selbst → Mögliche Fehler
-         * - "Separation ob Concerns" → Main Methode sollte aufgeteilt werden
+         * - "Separation of Concerns" → Main Methode sollte aufgeteilt werden
          * - "Open/Closed Principle" → Main ist nicht geschlossen für Änderungen
          * - "Law of Demeter" "principle of least knowledge" → Main Methode weiß zu viel
          * - "Dont repeat yourself" → Wiederholte forEach

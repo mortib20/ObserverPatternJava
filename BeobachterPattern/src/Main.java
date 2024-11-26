@@ -17,22 +17,22 @@ public class Main {
         weatherObservable.subscribe(computerObserver);
 
         System.out.println("------ 4x update ------");
-        weatherObservable.updateWeatherModel(WeatherModel.getRandomWeatherModel());
-        weatherObservable.updateWeatherModel(WeatherModel.getRandomWeatherModel());
-        weatherObservable.updateWeatherModel(WeatherModel.getRandomWeatherModel());
-        weatherObservable.updateWeatherModel(WeatherModel.getRandomWeatherModel());
+        weatherObservable.notifyObservers(WeatherModel.getRandomWeatherModel());
+        weatherObservable.notifyObservers(WeatherModel.getRandomWeatherModel());
+        weatherObservable.notifyObservers(WeatherModel.getRandomWeatherModel());
+        weatherObservable.notifyObservers(WeatherModel.getRandomWeatherModel());
 
         System.out.println("------ PhoneObserver unsubscribe ------");
         weatherObservable.unsubscribe(phoneObserver);
 
         System.out.println("------ Nur der Computer wird informiert ------");
-        weatherObservable.updateWeatherModel(WeatherModel.getRandomWeatherModel());
+        weatherObservable.notifyObservers(WeatherModel.getRandomWeatherModel());
 
         System.out.println("------ ComputerObserver unsubscribe ------");
         weatherObservable.unsubscribe(computerObserver);
 
         System.out.println("------ Update aber keiner wird informiert ------");
-        weatherObservable.updateWeatherModel(WeatherModel.getRandomWeatherModel());
+        weatherObservable.notifyObservers(WeatherModel.getRandomWeatherModel());
 
         System.out.println("------  Ende des Codes... ------ ");
     }
